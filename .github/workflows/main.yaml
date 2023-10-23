@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: ["develop"]
+    branches: ["main"]
 
 jobs:
   build-and-push-to-docker:
@@ -42,7 +42,6 @@ jobs:
         run: |
           git config user.email ${{ secrets.GIT_EMAIL }}
           git config user.name ${{ secrets.GIT_USERNAME }}
-          git config --global init.defaultBranch main
           git branch -m main
           pwd
           cat api-deploy.yaml
@@ -51,7 +50,7 @@ jobs:
           cat api-deploy.yaml
           git add .
           git commit -m 'Done  by Github Actions   Job changemanifest: ${{ github.run_number }}'
-          git push origin main
+          git push
         env:
           GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
           RUN_NUMBER: ${{ github.run_number }}
