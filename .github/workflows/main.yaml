@@ -16,6 +16,7 @@ jobs:
 
       - name: Build and tag image
         run: |
+          ls |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/testedeploy:latest back/note2note_backend |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/testedeploy:${{ github.run_number }} back/note2note_backend
 
