@@ -30,21 +30,25 @@ jobs:
   modifygit:
     needs: build-and-push-to-docker
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./k8s
     steps:
       - uses: actions/checkout@v3
         name: changing the deployment of git repo
         with:
           repository: "uiuqM/DWM-infra-k8s"
-          token: ${{ secrets.GIT_PASSWORD }}
       - name: modify the image
         run: |
-          git config user.email wilque.coelho@mail.uft.edu.br
-          git config user.name uiuqM
+          git config user.email ${{ secrets.GIT_EMAIL }}
+          git config user.name ${{ secrets.GIT_USERNAME }}
+          git config --global init.defaultBranch main
+          git branch -m main
           pwd
-          cat k8s/api-deploy.yaml
+          cat api-deploy.yaml
           pwd
-          sed -i "s+uiuq/testedeploy.*+uiuq/testedeploy:$RUN_NUMBER+g" k8s/api-deploy.yaml
-          cat k8s/api-deploy.yaml
+          sed -i "s+uiuq/teste-deploy.*+uiuq/teste-deploy:$RUN_NUMBER+g" api-deploy.yaml
+          cat api-deploy.yaml
           git add .
           git commit -m 'Done  by Github Actions   Job changemanifest: ${{ github.run_number }}'
           git push origin main
