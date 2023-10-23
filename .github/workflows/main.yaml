@@ -34,17 +34,17 @@ jobs:
       - uses: actions/checkout@v3
         name: changing the deployment of git repo
         with:
-          repository: "uiuqM/DWM-infra-k8s/tree/develop/k8s"
+          repository: "uiuqM/DWM-infra-k8s"
           token: ${{ secrets.GIT_PASSWORD }}
       - name: modify the image
         run: |
           git config user.email wilque.coelho@mail.uft.edu.br
           git config user.name uiuqM
           pwd
-          cat api-deploy.yaml
+          cat k8s/api-deploy.yaml
           pwd
-          sed -i "s+uiuq/testedeploy.*+uiuq/testedeploy:$RUN_NUMBER+g" api-deploy.yaml
-          cat api-deploy.yaml
+          sed -i "s+uiuq/testedeploy.*+uiuq/testedeploy:$RUN_NUMBER+g" k8s/api-deploy.yaml
+          cat k8s/api-deploy.yaml
           git add .
           git commit -m 'Done  by Github Actions   Job changemanifest: ${{ github.run_number }}'
           git push origin main
