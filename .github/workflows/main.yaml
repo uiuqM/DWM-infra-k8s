@@ -16,9 +16,8 @@ jobs:
 
       - name: Build and tag image
         run: |
-          cd front/diario-online-frontend
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/testedeploy:latest ./back/note2note_backend |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/testedeploy:${{ github.run_number }} ./back/note2note_backend
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/testedeploy:latest back/note2note_backend |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/testedeploy:${{ github.run_number }} back/note2note_backend
 
       - name: Push image to Docker Hub
         run: |
