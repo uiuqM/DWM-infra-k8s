@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: back/note2note_backend
+        working-directory: back
 
     steps:
       - uses: actions/checkout@v3
