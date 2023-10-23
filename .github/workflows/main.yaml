@@ -43,7 +43,7 @@ jobs:
           git config user.email ${{ secrets.GIT_EMAIL }}
           git config user.name ${{ secrets.GIT_USERNAME }}
           git config --global init.defaultBranch main
-          git branch -m <name>
+          git branch -m main
           pwd
           cat api-deploy.yaml
           pwd
