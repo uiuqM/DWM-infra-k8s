@@ -46,7 +46,7 @@ jobs:
           pwd
           cat api-deploy.yaml
           pwd
-          sed -i "s+uiuq/teste-deploy.*+uiuq/teste-deploy:$RUN_NUMBER+g" api-deploy.yaml
+          sed -i "s+uiuq/testedeploy.*+uiuq/testedeploy:$RUN_NUMBER+g" api-deploy.yaml
           cat api-deploy.yaml
           git add .
           git commit -m 'Done  by Github Actions   Job changemanifest: ${{ github.run_number }}'
