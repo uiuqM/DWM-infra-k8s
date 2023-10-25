@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: api
-        image: uiuq/testedeploy:26
+        image: uiuq/testedeploy:27
         ports:
           - containerPort: 8080
